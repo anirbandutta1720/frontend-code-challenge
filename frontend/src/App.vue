@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">All</router-link>
+      <router-link to="/favorites">Favorites</router-link>
     </div>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
@@ -17,12 +17,20 @@
   color: #2c3e50;
 }
 #nav {
-  padding: 30px;
+  margin: 10px;
+  border: solid 1px #71c1a1;
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #71c1a1;
+    width: 50%;
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #fff;
+      background: #71c1a1;
     }
   }
 }
