@@ -11,16 +11,15 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: Home
+      component: Home,
+      props: { showOnlyFavorite: false }
+
     },
     {
       path: "/favorites",
       name: "favorites",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/Favorites.vue")
+      component: Home,
+      props: { showOnlyFavorite: true }
     }
   ]
 });

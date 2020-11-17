@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    HomePage
-    <PokemonList />
+    <PokemonList :showOnlyFavorite="showOnlyFavorite" />
   </div>
   
 </template>
@@ -12,6 +11,12 @@ import PokemonList from "@/components/PokemonList.vue";
 
 export default {
   name: "home",
+  props: {
+    showOnlyFavorite: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: {
     PokemonList
   }
