@@ -48,6 +48,7 @@
           <g></g>
         </svg>
       </button>
+      <router-link to="/" class="btn-back">back</router-link>
     </div>
     <div class="pokemon-details">
       <div class="details-row">
@@ -153,6 +154,24 @@
         svg path {
           fill: #c00 !important;
         }
+      }
+    }
+    .btn-back {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background: transparent;
+      position: absolute;
+      left: 10px;
+      top: 20px;
+      font-weight: bold;
+      color: #000;
+      padding-left: 5px;
+      text-decoration: none;
+      &::before{
+        content: '\2039';
+        position: absolute;
+        left: -2px;
       }
     }
   }
