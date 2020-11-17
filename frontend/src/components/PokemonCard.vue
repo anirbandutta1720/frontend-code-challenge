@@ -1,16 +1,19 @@
 <template>
   <div class="pokemon-card">
     <div class="pokemon-image">
-      <img v-bind:src="data.image" alt="data.name">
+      <router-link :to="'/pokemon/'+data.name">
+        <img v-bind:src="data.image" alt="data.name">
+      </router-link>
     </div>
-    <div class="pokemon-details">
+    <div class="pokemon-details" v-bind:class="{short: !data.types}">
       <div class="text">
         <h3>{{data.name}}</h3>
-        <h5>{{data.types.join(", ")}}</h5>
+        <h5 v-if="data.types">{{data.types.join(", ")}}</h5>
       </div>
       <div class="action">
         <button
           class="add-to-favorite"
+          v-bind:title="data.isFavorite ? 'remove this pokemon from favorite list': 'add this pokemon to favorite list'"
           v-bind:class="{loved: data.isFavorite}"
           v-on:click="handleFavoriteClick"
         >
@@ -60,6 +63,9 @@
     justify-content: space-between;
     background: #f3f3f3;
     max-height: 60px;
+    &.short{
+      max-height: 40px;
+    }
     .text {
       display: flex;
       flex-direction: column;
@@ -86,7 +92,8 @@
         border: none;
         margin-right: 15px;
         outline: none;
-
+        cursor: pointer;
+        background: transparent;
         svg {
           height: 20px;
           width: 20px;
@@ -145,7 +152,7 @@ export default {
           }
         });
         if (result.data) {
-          this.data.isFavorite = !this.data.isFavorite;
+          this.$emit("onPokemonStausChange");
         }
       } catch (error) {
         console.error(error);

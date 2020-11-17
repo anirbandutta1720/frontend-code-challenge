@@ -1,8 +1,7 @@
 <template>
   <div class="home">
-    <PokemonList :showOnlyFavorite="showOnlyFavorite" />
+    <PokemonList :showOnlyFavorite="showOnlyFavorite"/>
   </div>
-  
 </template>
 
 <script>
@@ -10,7 +9,7 @@
 import PokemonList from "@/components/PokemonList.vue";
 
 export default {
-  name: "home",
+  name: "pokemons",
   props: {
     showOnlyFavorite: {
       type: Boolean,

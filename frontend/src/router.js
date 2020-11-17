@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+import Pokemons from "./views/Pokemons.vue";
+import PokemonDetails from "./views/PokemonDetails.vue";
 
 Vue.use(Router);
 
@@ -10,16 +11,20 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home,
+      name: "pokemons",
+      component: Pokemons,
       props: { showOnlyFavorite: false }
-
     },
     {
       path: "/favorites",
       name: "favorites",
-      component: Home,
+      component: Pokemons,
       props: { showOnlyFavorite: true }
+    },
+    {
+      path: "/pokemon/:name",
+      name: "pokemon-details",
+      component: PokemonDetails
     }
   ]
 });

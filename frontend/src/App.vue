@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="nav" v-if="$route.name!=='pokemon-details'">
       <router-link to="/">All</router-link>
       <router-link to="/favorites">Favorites</router-link>
     </div>
@@ -15,6 +15,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 #nav {
   margin: 10px;
