@@ -1,5 +1,5 @@
 <template>
-  <div class="pokemon-card">
+  <div class="pokemon-card" v-bind:class="{'display-list':this.$store.state.viewOption==='list'}">
     <div class="pokemon-image">
       <router-link :to="'/pokemon/'+data.name">
         <img v-bind:src="data.image" alt="data.name">
@@ -46,6 +46,27 @@
   margin: 10px;
   flex-direction: column;
   box-sizing: border-box;
+  &.display-list {
+    width: 100%;
+    flex-direction: row;
+    margin: 5px 10px;
+    &:first-child{
+      margin-top: 10px;
+    }
+    .pokemon-image{
+      justify-content: center;
+      flex: unset;
+      padding: 5px;
+      min-width: 80px;
+      img {
+        width: 60px;
+      }
+    }
+    .pokemon-details {
+      max-height: 150px;
+      align-items: center;
+    }
+  }
   .pokemon-image {
     flex: 3;
     padding: 20px;
@@ -157,7 +178,7 @@ export default {
       } catch (error) {
         console.error(error);
       }
-    }
+    },
   }
 };
 </script>

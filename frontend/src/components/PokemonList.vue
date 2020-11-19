@@ -15,7 +15,11 @@
           </select>
         </div>
         <div>
-          <button class="btn-list">
+          <button
+            class="btn-list"
+            v-on:click="updateViewOption('list')"
+            v-bind:class="{'selected':this.$store.state.viewOption==='list'}"
+          >
             <svg
               enable-background="new 0 0 26 26"
               id="Слой_1"
@@ -49,7 +53,11 @@
               </g>
             </svg>
           </button>
-          <button class="btn-grid selected">
+          <button
+            class="btn-grid"
+            v-bind:class="{'selected':this.$store.state.viewOption==='grid'}"
+            v-on:click="updateViewOption('grid')"
+          >
             <svg
               id="Layer_1"
               style="enable-background:new 0 0 50 50;"
@@ -113,6 +121,10 @@
   .pokemon-header {
     padding: 10px;
     box-shadow: 1px 3px 4px 0px #dadada;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    background: #fff;
   }
   .filter-bar {
     display: flex;
@@ -148,7 +160,12 @@
       outline: none;
       cursor: pointer;
       &.selected {
-        fill: #71c1a1;
+        svg {
+          fill: #71c1a1;
+          path {
+            fill: #71c1a1;
+          }
+        }
       }
     }
     .btn-list {
@@ -219,12 +236,20 @@ export default {
     },
     onPokemonStausChange() {
       this.getPokemonList();
+    },
+    updateViewOption(option) {
+      this.$store.commit("saveViewOption", option);
     }
   },
   mounted() {
     try {
       this.getPokemonTypes();
       this.getPokemonList();
+      if (this.$store.state.listPageY > 0) {
+        setTimeout(()=>{
+          window.scrollTo(0, this.$store.state.listPageY);
+        },300);
+      }
     } catch (error) {
       console.error(error);
     }
