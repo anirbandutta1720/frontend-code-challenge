@@ -50,10 +50,10 @@
     width: 100%;
     flex-direction: row;
     margin: 5px 10px;
-    &:first-child{
+    &:first-child {
       margin-top: 10px;
     }
-    .pokemon-image{
+    .pokemon-image {
       justify-content: center;
       flex: unset;
       padding: 5px;
@@ -84,7 +84,7 @@
     justify-content: space-between;
     background: #f3f3f3;
     max-height: 60px;
-    &.short{
+    &.short {
       max-height: 40px;
     }
     .text {
@@ -174,11 +174,25 @@ export default {
         });
         if (result.data) {
           this.$emit("onPokemonStausChange");
+          this.$toast.open(
+            this.data.isFavorite
+              ? "Removed from favorite list"
+              : "Added to favorite list"
+          );
+        } else {
+          this.$toast.open({
+            message: "Oops!! Something went wrong. Try again later",
+            type: "error"
+          });
         }
       } catch (error) {
         console.error(error);
+        this.$toast.open({
+          message: "Oops!! Something went wrong. Try again later",
+          type: "error"
+        });
       }
-    },
+    }
   }
 };
 </script>
