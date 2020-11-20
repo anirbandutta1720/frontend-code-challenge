@@ -206,7 +206,7 @@ export default {
   }),
   methods: {
     async getPokemonList() {
-      const queryString = `query { pokemons(query: { limit: 100, offset: 0, search:"${this
+      const queryString = `query { pokemons(query: { limit: 9999, offset: 0, search:"${this
         .txtSearch || ""}",
       ${
         this.typeSelected && this.typeSelected !== "all"

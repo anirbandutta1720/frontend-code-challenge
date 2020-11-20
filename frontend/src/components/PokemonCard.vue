@@ -46,6 +46,15 @@
   margin: 10px;
   flex-direction: column;
   box-sizing: border-box;
+  @media screen and (max-width: 600px) {
+    width: calc(33% - 20px);
+  }
+  @media screen and (max-width: 500px) {
+    width: calc(50% - 20px);
+  }
+  @media screen and (max-width: 320px) {
+    width: calc(100% - 20px);
+  }
   &.display-list {
     width: 100%;
     flex-direction: row;

@@ -17,6 +17,7 @@ body {
   text-align: center;
   color: #2c3e50;
   max-width: 1000px;
+  min-width: 320px;
   margin: 0 auto;
 }
 .fade-enter-active,
